@@ -55,19 +55,19 @@ function optimisticReducer(state, action) {
 function SodaiLogo({ size = 36 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 22h32l-3.5 16H11.5L8 22z" fill="#f59e0b"/>
-      <path d="M8 22h32l-3.5 16H11.5L8 22z" fill="url(#basketGrad)"/>
-      <path d="M13 28h22M12 34h24" stroke="#b45309" strokeWidth="1.2" opacity="0.5"/>
-      <path d="M11.5 22l2 16M24 22v16M36.5 22l-2 16" stroke="#b45309" strokeWidth="0.8" opacity="0.4"/>
-      <path d="M17 22 C17 13, 31 13, 31 22" stroke="#f59e0b" strokeWidth="3" fill="none" strokeLinecap="round"/>
-      <circle cx="18" cy="17" r="3.5" fill="#ef4444"/>
-      <circle cx="24.5" cy="14.5" r="3.5" fill="#22c55e"/>
-      <circle cx="31" cy="17" r="3.5" fill="#f97316"/>
-      <path d="M14 26 C17 24, 21 24, 23 26" stroke="white" strokeWidth="1.5" opacity="0.25" strokeLinecap="round"/>
+      <path d="M8 22h32l-3.5 16H11.5L8 22z" fill="#f59e0b" />
+      <path d="M8 22h32l-3.5 16H11.5L8 22z" fill="url(#basketGrad)" />
+      <path d="M13 28h22M12 34h24" stroke="#b45309" strokeWidth="1.2" opacity="0.5" />
+      <path d="M11.5 22l2 16M24 22v16M36.5 22l-2 16" stroke="#b45309" strokeWidth="0.8" opacity="0.4" />
+      <path d="M17 22 C17 13, 31 13, 31 22" stroke="#f59e0b" strokeWidth="3" fill="none" strokeLinecap="round" />
+      <circle cx="18" cy="17" r="3.5" fill="#ef4444" />
+      <circle cx="24.5" cy="14.5" r="3.5" fill="#22c55e" />
+      <circle cx="31" cy="17" r="3.5" fill="#f97316" />
+      <path d="M14 26 C17 24, 21 24, 23 26" stroke="white" strokeWidth="1.5" opacity="0.25" strokeLinecap="round" />
       <defs>
         <linearGradient id="basketGrad" x1="8" y1="22" x2="40" y2="38" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#fbbf24"/>
-          <stop offset="1" stopColor="#d97706"/>
+          <stop stopColor="#fbbf24" />
+          <stop offset="1" stopColor="#d97706" />
         </linearGradient>
       </defs>
     </svg>
@@ -77,11 +77,11 @@ function SodaiLogo({ size = 36 }) {
 function SunIcon() {
   return (
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="5"/>
-      <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-      <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      <circle cx="12" cy="12" r="5" />
+      <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+      <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
     </svg>
   );
 }
@@ -89,7 +89,7 @@ function SunIcon() {
 function MoonIcon() {
   return (
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
     </svg>
   );
 }
@@ -115,35 +115,44 @@ export default function SodaiApp({ initialItems }) {
   const router = useRouter();
 
   // SSE real-time updates
+  // useEffect(() => {
+  //   let es;
+  //   let retryTimeout;
+
+  //   function connect() {
+  //     es = new EventSource("/api/sse");
+
+  //     es.onmessage = (e) => {
+  //       try {
+  //         const data = JSON.parse(e.data);
+  //         if (data.type === "REFRESH") {
+  //           router.refresh();
+  //         }
+  //       } catch {}
+  //     };
+
+  //     es.onerror = () => {
+  //       es.close();
+  //       // Reconnect after 3 seconds
+  //       retryTimeout = setTimeout(connect, 3000);
+  //     };
+  //   }
+
+  //   connect();
+
+  //   return () => {
+  //     if (es) es.close();
+  //     if (retryTimeout) clearTimeout(retryTimeout);
+  //   };
+  // }, []);
+
+  // Polling — প্রতি ৩ সেকেন্ডে refresh
   useEffect(() => {
-    let es;
-    let retryTimeout;
+    const interval = setInterval(() => {
+      router.refresh();
+    }, 3000);
 
-    function connect() {
-      es = new EventSource("/api/sse");
-
-      es.onmessage = (e) => {
-        try {
-          const data = JSON.parse(e.data);
-          if (data.type === "REFRESH") {
-            router.refresh();
-          }
-        } catch {}
-      };
-
-      es.onerror = () => {
-        es.close();
-        // Reconnect after 3 seconds
-        retryTimeout = setTimeout(connect, 3000);
-      };
-    }
-
-    connect();
-
-    return () => {
-      if (es) es.close();
-      if (retryTimeout) clearTimeout(retryTimeout);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   const toggleTheme = () => {
@@ -580,7 +589,7 @@ function ItemCard({ item, idx, onToggle, onDelete, t }) {
       >
         {isDone && (
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
+            <polyline points="20 6 9 17 4 12" />
           </svg>
         )}
       </button>
@@ -638,8 +647,8 @@ function ItemCard({ item, idx, onToggle, onDelete, t }) {
         onMouseLeave={e => e.currentTarget.style.background = "rgba(239,68,68,0.08)"}
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="3 6 5 6 21 6"/>
-          <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+          <polyline points="3 6 5 6 21 6" />
+          <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2" />
         </svg>
       </button>
     </div>
