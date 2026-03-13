@@ -1,0 +1,37 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#161b27"/>
+  
+  <!-- Basket body -->
+  <path d="M96 232h320l-38 192H134L96 232z" fill="url(#bg1)"/>
+  
+  <!-- Basket weave lines -->
+  <path d="M136 296h240M128 360h256M116 232l22 192M256 232v192M396 232l-22 192" stroke="#b45309" strokeWidth="6" opacity="0.4"/>
+  
+  <!-- Handle -->
+  <path d="M176 232 C176 136, 336 136, 336 232" stroke="url(#handleGrad)" strokeWidth="28" fill="none" strokeLinecap="round"/>
+  
+  <!-- Items in basket -->
+  <circle cx="192" cy="172" r="36" fill="#ef4444"/>
+  <circle cx="256" cy="144" r="36" fill="#22c55e"/>
+  <circle cx="320" cy="172" r="36" fill="#f97316"/>
+  
+  <!-- Shine on items -->
+  <circle cx="180" cy="160" r="10" fill="white" opacity="0.3"/>
+  <circle cx="244" cy="132" r="10" fill="white" opacity="0.3"/>
+  <circle cx="308" cy="160" r="10" fill="white" opacity="0.3"/>
+  
+  <!-- Basket shine -->
+  <path d="M148 272 C180 252, 220 252, 250 272" stroke="white" strokeWidth="8" opacity="0.2" strokeLinecap="round"/>
+
+  <defs>
+    <linearGradient id="bg1" x1="96" y1="232" x2="416" y2="424" gradientUnits="userSpaceOnUse">
+      <stop stopColor="#fbbf24"/>
+      <stop offset="1" stopColor="#d97706"/>
+    </linearGradient>
+    <linearGradient id="handleGrad" x1="176" y1="190" x2="336" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stopColor="#f59e0b"/>
+      <stop offset="1" stopColor="#fbbf24"/>
+    </linearGradient>
+  </defs>
+</svg>
